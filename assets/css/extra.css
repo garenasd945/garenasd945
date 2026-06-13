@@ -1,0 +1,332 @@
+/* ==========================================================================
+   extra.css  —  Visual enhancement layer (decoupled from the theme)
+   --------------------------------------------------------------------------
+   This file is loaded AFTER the compiled theme (main.css) from
+   _includes/head/custom.html.  It is plain CSS on purpose: it does not touch
+   the SCSS build pipeline, so it is safe and easy to edit.
+
+   增强样式层：在主题 main.css 之后加载，与 SCSS 构建解耦，单独编辑、零风险。
+   想调整外观（配色 / 圆角 / 阴影 / 暗色模式）改这里即可。
+
+   Sections:
+     1. Design tokens (colours, radius, shadow) + dark theme
+     2. Typography & base
+     3. Section headings  (# 🔥 News ...)
+     4. Publication / teammate cards (.paper-box)
+     5. Badges
+     6. Author profile (sidebar)
+     7. Navigation (masthead)
+     8. Links, resource boxes, buttons
+     9. Floating UI: reading progress, back-to-top, theme toggle
+    10. Scroll-reveal animation
+   ========================================================================== */
+
+/* 1. ----------------------------------------------------------------- TOKENS */
+:root {
+  --accent:        #4f46e5;   /* indigo  */
+  --accent-2:      #06b6d4;   /* cyan    */
+  --accent-soft:   rgba(79, 70, 229, 0.10);
+  --grad:          linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+
+  --bg:            #ffffff;
+  --bg-soft:       #f7f8fb;
+  --card-bg:       #ffffff;
+  --text:          #25292e;
+  --text-soft:     #5b6573;
+  --border:        #e9ecf1;
+  --shadow:        0 1px 2px rgba(16,24,40,.04), 0 8px 24px rgba(16,24,40,.06);
+  --shadow-lg:     0 12px 32px rgba(16,24,40,.12);
+}
+
+html[data-theme="dark"] {
+  --accent:        #818cf8;
+  --accent-2:      #22d3ee;
+  --accent-soft:   rgba(129, 140, 248, 0.14);
+
+  --bg:            #0f1115;
+  --bg-soft:       #161922;
+  --card-bg:       #181b22;
+  --text:          #d4d8df;
+  --text-soft:     #9aa3b2;
+  --border:        #262b36;
+  --shadow:        0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.45);
+  --shadow-lg:     0 14px 38px rgba(0,0,0,.55);
+}
+
+/* 2. ------------------------------------------------------------ TYPOGRAPHY */
+body {
+  font-family: "Inter", "Trebuchet MS", Helvetica, sans-serif;
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color .3s ease, color .3s ease;
+}
+
+#main { background: transparent; }
+
+.page__content { color: var(--text); }
+.page__content p,
+.page__content li { line-height: 1.75; }
+
+html[data-theme="dark"] .page,
+html[data-theme="dark"] .page__content { color: var(--text); }
+
+/* 3. -------------------------------------------------------------- HEADINGS */
+.page__content h1 {
+  position: relative;
+  margin-top: 1.6em;
+  padding-bottom: .3em;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  border-bottom: 2px solid var(--border);
+}
+.page__content h1::after {              /* accent underline that grows on hover */
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 64px;
+  height: 2px;
+  background: var(--grad);
+  border-radius: 2px;
+  transition: width .35s ease;
+}
+.page__content h1:hover::after { width: 120px; }
+
+.page__content h3 { color: var(--text); }
+
+/* 4. ----------------------------------------------------------------- CARDS */
+.paper-box {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);   /* override theme's bare bottom rule */
+  border-radius: 16px;
+  padding: 1.6em !important;
+  margin: 1.4em 0;
+  box-shadow: var(--shadow);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.paper-box:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+}
+
+/* image: rounded, clipped so the inner <img> can zoom on hover */
+.paper-box-image {
+  position: relative;
+}
+.paper-box-image > div {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  line-height: 0;
+}
+.paper-box-image img {
+  border-radius: 12px;
+  box-shadow: none !important;
+  transition: transform .4s ease;
+  display: block;
+}
+.paper-box:hover .paper-box-image img { transform: scale(1.05); }
+
+.paper-box-text a { font-weight: 600; }
+
+/* 5. --------------------------------------------------------------- BADGES */
+.badge {
+  position: absolute !important;
+  top: .6em;
+  left: .6em;
+  margin: 0 !important;
+  padding: .3em .8em !important;
+  background: var(--grad) !important;
+  color: #fff !important;
+  font-size: .72em !important;
+  font-weight: 700;
+  letter-spacing: .02em;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(16,24,40,.25);
+  backdrop-filter: saturate(140%);
+  z-index: 2;
+}
+
+/* 6. -------------------------------------------------------- AUTHOR PROFILE */
+.author__avatar img {
+  border-radius: 50% !important;
+  border: 4px solid var(--card-bg);
+  box-shadow: 0 0 0 2px var(--accent), var(--shadow);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.author__avatar img:hover {
+  transform: scale(1.04) rotate(-1deg);
+  box-shadow: 0 0 0 3px var(--accent), var(--shadow-lg);
+}
+.author__name {
+  font-weight: 800;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.author__bio { color: var(--text-soft); }
+
+.author__urls,
+.author__urls li { color: var(--text-soft); }
+.author__urls a {
+  color: var(--text-soft);
+  text-decoration: none;
+  transition: color .2s ease, transform .2s ease;
+  display: inline-block;
+}
+.author__urls a:hover {
+  color: var(--accent);
+  transform: translateX(3px);
+}
+.author__urls-wrapper { border: none; }
+
+.author__urls_sm a {
+  color: var(--text-soft);
+  transition: color .2s ease, transform .2s ease;
+}
+.author__urls_sm a:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* 7. ----------------------------------------------------------- NAVIGATION */
+.masthead {
+  background-color: color-mix(in srgb, var(--bg) 80%, transparent) !important;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border) !important;
+}
+.greedy-nav { background: transparent !important; }
+.greedy-nav a { color: var(--text-soft) !important; }
+.greedy-nav .visible-links a::before { background: var(--grad) !important; height: 2px !important; }
+.greedy-nav a:hover { color: var(--accent) !important; }
+.masthead__menu-home-item a { color: var(--text) !important; font-weight: 800; }
+
+/* 8. ----------------------------------------------------- LINKS & RESOURCES */
+.page__content a:not(.btn) {
+  color: var(--accent);
+  text-decoration: none;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 0% 1.5px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size .3s ease, color .2s ease;
+}
+.page__content a:not(.btn):hover {
+  color: var(--accent-2);
+  background-size: 100% 1.5px;
+}
+
+.resource-box {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 12px;
+  padding: 1.1em 1.4em;
+  margin: 1em 0;
+  box-shadow: var(--shadow);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.resource-box:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.resource-box h3 { margin-top: 0; }
+
+.page__content .btn,
+.btn {
+  display: inline-block;
+  background: var(--grad);
+  color: #fff !important;
+  padding: .5em 1.1em;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 6px 16px rgba(79,70,229,.30);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.page__content .btn:hover,
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(79,70,229,.40);
+}
+
+/* code / tables adapt to dark mode */
+html[data-theme="dark"] .page__content code,
+html[data-theme="dark"] pre { background: var(--bg-soft) !important; color: var(--text); }
+html[data-theme="dark"] table { color: var(--text); }
+html[data-theme="dark"] td,
+html[data-theme="dark"] th { border-color: var(--border) !important; }
+
+/* 9. ------------------------------------------------------------ FLOATING UI */
+/* reading progress bar */
+#reading-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: var(--grad);
+  z-index: 9999;
+  transition: width .1s linear;
+}
+
+/* shared round floating buttons */
+.fab {
+  position: fixed;
+  right: 1.4rem;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--card-bg);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  z-index: 9998;
+  font-size: 1.1rem;
+  transition: transform .2s ease, box-shadow .2s ease, background .3s ease, opacity .3s ease;
+}
+.fab:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); color: var(--accent); }
+
+#theme-toggle { bottom: 5.4rem; }
+#back-to-top  { bottom: 1.4rem; opacity: 0; pointer-events: none; }
+#back-to-top.show { opacity: 1; pointer-events: auto; }
+
+/* 10. -------------------------------------------------------- SCROLL REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  * { scroll-behavior: auto !important; }
+}
+
+html { scroll-behavior: smooth; }
+
+/* 11. ----------------------------------------------- DARK-MODE LEFTOVERS */
+/* a few theme elements hard-code a white background — neutralise them */
+html[data-theme="dark"] .author__urls {
+  background: var(--card-bg);
+  border-color: var(--border);
+  box-shadow: var(--shadow);
+}
+html[data-theme="dark"] .page__footer {
+  background-color: var(--bg-soft);
+  color: var(--text-soft);
+  border-top: 1px solid var(--border);
+}
+html[data-theme="dark"] .masthead { background-color: rgba(15, 17, 21, .8) !important; }
+html[data-theme="dark"] img.author__avatar,
+html[data-theme="dark"] .paper-box-image img { filter: brightness(.92); }

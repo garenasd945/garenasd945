@@ -1,0 +1,20 @@
+{%- comment -%}
+  Renders the publication cards from _data/publications.yml.
+  从 _data/publications.yml 读取并渲染论文卡片。编辑论文请改 YAML，不要改这里。
+{%- endcomment -%}
+{% for p in site.data.publications %}
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">{{ p.venue }}</div><img src='{{ p.image }}' alt="{{ p.title | strip_html | escape }}" width="100%"></div></div> <div class='paper-box-text'>
+{%- capture pub_md -%}
+[{{ p.title }}]({{ p.url }})
+
+{% if p.title_zh %}{{ p.title_zh }}
+
+{% endif %}{{ p.authors }}
+
+{% for h in p.highlights %}- {{ h }}
+
+{% endfor %}{% if p.extra %}{{ p.extra }}{% endif %}
+{%- endcapture -%}
+{{ pub_md | markdownify }}
+</div> </div>
+{% endfor %}

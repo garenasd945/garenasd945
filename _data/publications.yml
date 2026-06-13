@@ -1,0 +1,82 @@
+# =============================================================================
+#  Selected publications / 代表性论文
+# -----------------------------------------------------------------------------
+#  To add a paper, copy one block below and edit the fields. No HTML needed.
+#  添加论文：复制下面任意一段，修改字段即可，无需写 HTML。
+#
+#  venue      : badge shown on the thumbnail  (徽标，如 PNAS / Nature Communications)
+#  image      : thumbnail URL                 (缩略图链接)
+#  title      : paper title (English)         (英文标题，作为链接文字)
+#  url        : link to the paper             (论文链接)
+#  title_zh   : Chinese title (optional)      (中文标题，可留空)
+#  authors    : author list (markdown ok)     (作者，支持 **加粗**)
+#  highlights : bullet points (markdown ok)   (要点，支持链接/加粗，中英可写两行)
+#  extra      : extra markdown line (optional) (额外说明，如数据集下载，可留空)
+# =============================================================================
+
+- venue: "PNAS"
+  image: "https://raw.githubusercontent.com/kelvinfkr/kelvinfkr.github.io/refs/heads/main/_data/pnas2025.jpg"
+  title: "Reinforcement learning–based adaptive strategies for climate change adaptation: An application for coastal flood risk management"
+  url: "https://www.pnas.org/doi/10.1073/pnas.2402826122"
+  title_zh: "《基于强化学习的自适应气候适应策略：纽约曼哈顿海岸洪水风险管理应用》"
+  authors: "**Kairui Feng**, Ning Lin, et al."
+  highlights:
+    - |-
+      Reinforcement learning reduces coastal flood adaptation costs by up to 77%.
+      强化学习可将沿海洪水适应成本最多降低77%。
+    - |-
+      RL integrates protection, accommodation, and retreat strategies for higher efficiency.
+      强化学习整合防护、适应与退避策略，提升经济效益。
+    - |-
+      RL effectively controls tail risks and adapts to climate uncertainties.
+      强化学习有效控制尾部风险，适应气候不确定性。
+
+- venue: "Nature Communications"
+  image: "https://raw.githubusercontent.com/kelvinfkr/kelvinfkr.github.io/refs/heads/main/_data/nc2025.jpg"
+  title: "Hurricane Ida’s blackout-heatwave compound risk in a changing climate"
+  url: "https://www.nature.com/articles/s41467-025-59737-8"
+  title_zh: "《气候变化背景下飓风“艾达”引发的停电-热浪复合风险评估》"
+  authors: "**Kairui Feng**, Ning Lin, et al."
+  highlights:
+    - |-
+      Return period of Ida-like compound events drops from 278 to 16.2 years under SSP5-8.5.
+      “艾达级”复合灾害重现期将从278年降至16.2年（SSP5-8.5）
+    - |-
+      Heatwave intensification is the dominant driver, increasing risk by 3–5 times.
+      热浪增强是风险上升的主要驱动因素，可使风险提升3–5倍
+    - |-
+      Study informs grid resilience and adaptation strategies, such as levee upgrades and distributed energy systems
+      研究为电网韧性提升与气候适应策略（如加高海堤、分布式能源）提供量化依据
+
+- venue: "Nature Communications"
+  image: "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-022-32018-4/MediaObjects/41467_2022_32018_Fig3_HTML.png"
+  title: "Tropical cyclone-blackout-heatwave compound hazard resilience in a changing climate"
+  url: "https://doi.org/10.1038/s41467-022-32018-4"
+  title_zh: "《气候变化下台风-停电-热浪复合灾害韧性研究》"
+  authors: "**Kairui Feng**, Min Ouyang, Ning Lin"
+  highlights:
+    - |-
+      Developed a pioneering model to project power outage resilience under evolving climate conditions.
+      构建了创新模型，预测气候变化背景下电网停电韧性。
+    - |-
+      Proposed a cost-effective strategy to strengthen power systems against compound climate risks.
+      提出低成本强化电力系统应对复合气候灾害的策略。
+    - "Featured by [NSF](https://beta.nsf.gov/news/burying-short-sections-power-lines-could-drastically-reduce-hurricanes-impact-coastal), [The Hill](https://thehill.com/changing-america/resilience/natural-disasters/3606490-burying-just-5-percent-of-power-lines-would-improve-resilience-in-hurricane-prone-regions/), [Yahoo](http://ct.moreover.com/?a=48516502277&p=1pl&v=1&x=8SKzgY8upwY5q_fLSs922Q), [Mirage](http://ct.moreover.com/?a=48509341316&p=1pl&v=1&x=QTjKY8U3xGAsjn1-uI2XWg), [Vox](https://www.vox.com/energy-and-environment/2017/9/14/16301836/florida-irma-harvey-blackouts), etc."
+
+- venue: "NeurIPS"
+  image: "https://github.com/neuralchen/RainNet/raw/main/docs/img/HRGT_201009539_201009571.webp"
+  title: "RainNet: A large-scale imagery dataset and benchmark for spatial precipitation downscaling"
+  url: "https://proceedings.neurips.cc/paper_files/paper/2022/file/3fbf0c1ea0716c03dea93bb6be78dd6f-Paper-Conference.pdf"
+  title_zh: "《RainNet：空间降尺度降水图像数据集与基准》"
+  authors: "Xuanhong Chen, **Kairui Feng (co-first)**, et al."
+  highlights:
+    - |-
+      Compiled a comprehensive real-world precipitation dataset (1979–2018).
+      收集并整理覆盖1979–2018年的大规模实测降水数据集。
+    - |-
+      Evaluated multiple downscaling methods to accurately model high-resolution rainfall patterns.
+      系统评估多种降尺度方法，提升高分辨率降水预测精度。
+    - |-
+      Provided high-resolution (4km) rainfall dataset and benchmark tools.
+      公布高分辨率（4km）降水数据及评估基准。
+  extra: "Download 数据集: [Google Drive](https://drive.google.com/file/d/1cvzT3n9N7o06YhykdakOsboyqwTavkEP/view) \\| 代码仓库: [Github](https://github.com/neuralchen/RainNet?tab=readme-ov-file)."
