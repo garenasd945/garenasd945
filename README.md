@@ -9,5 +9,5 @@ My research interest includes neural machine translation and computer vision. I 
 
 # 📖 Educations
 - *2021.04 - 2026.08 (now)*, 博士研究生在读. 
-- *2018.06 - 2021.04 *, 硕士研究生. 
+- *2018.06 - 2021.04*, 硕士研究生. 
 - *2014.09 - 2018.06*, 本科. 
